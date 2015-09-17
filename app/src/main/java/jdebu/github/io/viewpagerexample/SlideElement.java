@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,16 +15,14 @@ import android.widget.TextView;
 public class SlideElement extends Fragment {
 
     public static final String NUM_ELEMENT = "page";
-    private int numElemet;
+    int numElemet;
     public SlideElement() {
         // Required empty public constructor
     }
-    public  static SlideElement create(int numElemet){
-        SlideElement slideElement=new SlideElement();
+    public SlideElement(int numElemet){
         Bundle args= new Bundle();
         args.putInt(NUM_ELEMENT,numElemet);
-        slideElement.setArguments(args);
-        return slideElement;
+        this.setArguments(args);
     }
 
     @Override
@@ -31,6 +30,7 @@ public class SlideElement extends Fragment {
         super.onCreate(savedInstanceState);
         numElemet= getArguments().getInt(NUM_ELEMENT);
         if (getArguments() != null) {
+
         }
     }
 
@@ -43,6 +43,8 @@ public class SlideElement extends Fragment {
                 .setText(getString(R.string.title_template_step, numElemet + 1));
         return rootView;
     }
+
+
 
     public int getNumElemet() {
         return numElemet;

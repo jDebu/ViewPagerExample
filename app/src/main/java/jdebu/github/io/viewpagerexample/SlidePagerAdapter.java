@@ -9,16 +9,27 @@ import android.support.v4.app.FragmentStatePagerAdapter;
  */
 public class SlidePagerAdapter extends FragmentStatePagerAdapter {
     private static final int NUM_PAGES = 5;
+    private int nextPage;
+
+
 
     public SlidePagerAdapter(FragmentManager fragmentManager){
         super(fragmentManager);
     }
     @Override
     public Fragment getItem(int position) {
-        return SlideElement.create(position);
+        SlideElement slideElement = new SlideElement(position);
+
+        return slideElement;
+    }
+
+
+    public int getNextPage() {
+        return nextPage;
     }
 
     @Override
+
     public int getCount() {
         return NUM_PAGES;
     }
